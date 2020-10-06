@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Oscar": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"D:\\projects\\YRC\\Excel Macros\\ExcelMacros.dvo\"",
+      "workingDirectory": "I:\\DVProjects\\IntuitionData\\Oscar\\Oscar\\bin\\Debug\\netcoreapp3.1"
+    }
+  }
+}

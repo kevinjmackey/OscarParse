@@ -1,0 +1,30 @@
+BEGIN
+	datastore myStore "My Database" {"Testing" : "True"}
+	item item1 "Customer Record" 
+			associated modified_by one_to_one item3 key item3ID key someID 
+			associated has_address MANY_TO_MANY item4 key ID key i4ID
+	someId integer {"PK" : true, "required" : true, "auto" : "true", "increment" : [1,1]}
+	Name character length +7 default "Kevin"
+	Age integer default -28
+	item3ID integer
+	end_item
+	item item2 plural "itemtwos"
+	ID integer
+	Home string length 30
+        Value numeric length 7 precision 2 scale 1 default 12345.0
+	Now datetime precision 7 DEFAULT LEFT(GETDATE(), 10)
+		item item3 "Child of item2"
+		someID integer {"PK" : "true"}
+		someName string length 255
+		end_item
+		item item4 "Also Child of item2"
+		someID string {"PK" : "true"}
+		someName string length 255
+		end_item
+	end_item
+	item item4 plural "itemfours"
+	i4ID integer
+	some_text_field string
+	end_item
+	end_datastore
+end

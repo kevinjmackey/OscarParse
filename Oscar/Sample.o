@@ -1,0 +1,19 @@
+BEGIN
+	datastore myStore "My Database"
+	item item1 "Customer Record"
+	someId integer {"PK" : true, "required" : true, "auto" : "true", "increment" : [1,1]}
+	Name string length 7 default "Kevin"
+	Age integer default +28
+	end_item
+	item item2
+	Home string
+        Value float length 7 precision 2 scale 1 default 12345.0
+	Now timestamp DEFAULT LEFT(GETDATE(), 10)
+		item item3 "Child of item2"
+		someID integer {"PK" : "true"}
+		someName string length 255
+		end_item
+	#include item4.o
+	end_item
+	end_datastore
+end
