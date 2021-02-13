@@ -2,8 +2,8 @@
   "profiles": {
     "Oscar": {
       "commandName": "Project",
-      "commandLineArgs": "-i \"D:\\projects\\YRC\\Excel Macros\\ExcelMacros.dvo\"",
-      "workingDirectory": "I:\\DVProjects\\IntuitionData\\Oscar\\Oscar\\bin\\Debug\\netcoreapp3.1"
+      "commandLineArgs": "-i \"I:\\DVProjects\\IntuitionData\\OscarParse\\Oscar\\bin\\Debug\\netcoreapp3.1\\Sample.dvo\"",
+      "workingDirectory": "I:\\DVProjects\\IntuitionData\\OscarParse\\Oscar\\bin\\Debug\\netcoreapp3.1"
     }
   }
 }
