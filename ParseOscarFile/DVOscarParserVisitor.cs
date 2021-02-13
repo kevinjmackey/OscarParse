@@ -44,12 +44,6 @@ public interface IDVOscarParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitBlock([NotNull] DVOscarParser.BlockContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DVOscarParser.datastore_statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitDatastore_statements([NotNull] DVOscarParser.Datastore_statementsContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="DVOscarParser.datastore_statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -122,6 +116,12 @@ public interface IDVOscarParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitAttribute_def([NotNull] DVOscarParser.Attribute_defContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DVOscarParser.attrib_properties"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DVOscarParser.precision_def"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -151,6 +151,12 @@ public interface IDVOscarParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIdentifier([NotNull] DVOscarParser.IdentifierContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DVOscarParser.datatype_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDatatype_def([NotNull] DVOscarParser.Datatype_defContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DVOscarParser.properties"/>.
 	/// </summary>

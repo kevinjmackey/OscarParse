@@ -59,18 +59,6 @@ public partial class DVOscarParserBaseListener : IDVOscarParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitBlock([NotNull] DVOscarParser.BlockContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DVOscarParser.datastore_statements"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDatastore_statements([NotNull] DVOscarParser.Datastore_statementsContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DVOscarParser.datastore_statements"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDatastore_statements([NotNull] DVOscarParser.Datastore_statementsContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.datastore_statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -215,6 +203,18 @@ public partial class DVOscarParserBaseListener : IDVOscarParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitAttribute_def([NotNull] DVOscarParser.Attribute_defContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DVOscarParser.attrib_properties"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DVOscarParser.attrib_properties"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.precision_def"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -274,6 +274,18 @@ public partial class DVOscarParserBaseListener : IDVOscarParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIdentifier([NotNull] DVOscarParser.IdentifierContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DVOscarParser.datatype_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDatatype_def([NotNull] DVOscarParser.Datatype_defContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DVOscarParser.datatype_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDatatype_def([NotNull] DVOscarParser.Datatype_defContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.properties"/>.
 	/// <para>The default implementation does nothing.</para>

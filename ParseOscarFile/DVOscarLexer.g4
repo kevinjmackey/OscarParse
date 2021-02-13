@@ -3,6 +3,9 @@ lexer grammar DVOscarLexer;
 ASSOCIATED
     : A S S O C I A T E D
     ;
+ATTRIBUTE
+   : A T T R I B U T E
+   ;
 BEGIN
 	: B E G I N
 	;
@@ -31,10 +34,10 @@ DATATYPE
     | DATETIME
     ;
 BOOLEAN
-    : B O O L E A N
+    : COLON B O O L E A N
     ;
 DATE
-    : D  A T E
+    : COLON D A T E
     ;
 DEFAULT
     : D E F A U L T
@@ -42,6 +45,9 @@ DEFAULT
 END
 	: E N D
 	;
+END_ATTRIBUTE
+   : E N D '_' A T T R I B U T E
+   ;
 END_DATASTORE
 	: E N D '_' D A T A S T O R E
 	;
@@ -55,13 +61,13 @@ FALSE
     : F A L S E
     ;
 CHARACTER
-    : C H A R A C T E R
+    : COLON C H A R A C T E R
     ;
 FLOAT
-    : F L O A T
+    : COLON F L O A T
     ;
 GUID
-    : G U I D
+    : COLON G U I D
     ;
 ITEM
 	: I T E M
@@ -103,7 +109,7 @@ UNDERSCORE
    : '_'
    ;
 INTEGER
-   : I N T E G E R
+   : COLON I N T E G E R
    ;
 MANY_TO_MANY
    : M A N Y '_' T O '_' M A N Y
@@ -122,7 +128,7 @@ NUMBER
     | NUMBER_FLOAT
     ;
 NUMERIC
-    : N U M E R I C
+    : COLON N U M E R I C
     ;
 ONE_TO_ONE
     : O N E '_' T O '_' O N E
@@ -134,16 +140,16 @@ PRECISION
     : P R E C I S I O N
     ;
 STRING
-    : S T R I N G
+    : COLON S T R I N G
     ;
 STRING_LITERAL
    : '"' (~["\\\r\n] | ESCAPE_SEQUENCE)* '"'
    ;
 TIME
-   : T I M E
+   : COLON T I M E
    ;
 DATETIME
-    : D A T E T I M E
+    : COLON D A T E T I M E
     ;
 TRUE
     : T R U E

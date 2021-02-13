@@ -51,16 +51,6 @@ public interface IDVOscarParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitBlock([NotNull] DVOscarParser.BlockContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DVOscarParser.datastore_statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDatastore_statements([NotNull] DVOscarParser.Datastore_statementsContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DVOscarParser.datastore_statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDatastore_statements([NotNull] DVOscarParser.Datastore_statementsContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.datastore_statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -181,6 +171,16 @@ public interface IDVOscarParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitAttribute_def([NotNull] DVOscarParser.Attribute_defContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DVOscarParser.attrib_properties"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DVOscarParser.attrib_properties"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.precision_def"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -230,6 +230,16 @@ public interface IDVOscarParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitIdentifier([NotNull] DVOscarParser.IdentifierContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DVOscarParser.datatype_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDatatype_def([NotNull] DVOscarParser.Datatype_defContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DVOscarParser.datatype_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDatatype_def([NotNull] DVOscarParser.Datatype_defContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.properties"/>.
 	/// </summary>

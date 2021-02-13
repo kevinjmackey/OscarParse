@@ -86,9 +86,9 @@ namespace DV.Oscar
                         _currentParent.AddChild(keywordNode);
                     }
                 }
-                if (child.GetType() == typeof(DVOscarParser.Datastore_statementsContext))
+                if (child.GetType() == typeof(DVOscarParser.Datastore_statementContext))
                 {
-                    bool tf = VisitChildren((DVOscarParser.Datastore_statementsContext)child);
+                    bool tf = VisitDatastore_statement((DVOscarParser.Datastore_statementContext)child);
                 }
             }
              return TRUE;
@@ -262,13 +262,27 @@ namespace DV.Oscar
                     node.Parent = _currentParent;
                     _currentParent.AddChild(node);
                 }
+                if (child.GetType() == typeof(DVOscarParser.Attrib_propertiesContext))
+                {
+                    _currentParent = node;
+                    bool tf = VisitAttrib_properties((DVOscarParser.Attrib_propertiesContext)child);
+                }
+            }
+            return TRUE;
+        }
+        public override bool VisitAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context)
+        {
+            UastNode node = _currentParent;
+            foreach (var child in context.children)
+            {
                 if (child.GetType() == typeof(DVOscarParser.Display_nameContext))
                 {
                     node.AddProperty("Display Name", child.GetText());
                 }
-                if (child.GetType() == typeof(Antlr4.Runtime.Tree.TerminalNodeImpl))
+                if (child.GetType() == typeof(DVOscarParser.Datatype_defContext))
                 {
-                    node.AddProperty("Datatype", child.GetText().ToUpper());
+                    DVOscarParser.Datatype_defContext datatype = (DVOscarParser.Datatype_defContext)child;
+                    node.AddProperty("Datatype", datatype.GetChild(0).GetText().ToUpper().Replace(":", ""));
                 }
                 if (child.GetType() == typeof(DVOscarParser.Length_defContext))
                 {
@@ -307,5 +321,5 @@ namespace DV.Oscar
             }
             return TRUE;
         }
-    }
+     }
 }
