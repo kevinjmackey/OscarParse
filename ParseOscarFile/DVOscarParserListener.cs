@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from DVOscarParser.g4 by ANTLR 4.8
+// Generated from I:\DVProjects\IntuitionData\OscarAntlr\DVOscarParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -140,6 +140,16 @@ public interface IDVOscarParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitM2m([NotNull] DVOscarParser.M2mContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DVOscarParser.m2o"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterM2o([NotNull] DVOscarParser.M2oContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DVOscarParser.m2o"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitM2o([NotNull] DVOscarParser.M2oContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DVOscarParser.from_key"/>.
 	/// </summary>

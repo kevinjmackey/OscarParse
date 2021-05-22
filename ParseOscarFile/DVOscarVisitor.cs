@@ -218,6 +218,10 @@ namespace DV.Oscar
                         {
                             node.AddProperty("Cardinality", "M-2-M");
                         }
+                        if (c.GetType() == typeof(DVOscarParser.M2oContext))
+                        {
+                            node.AddProperty("Cardinality", "M-2-O");
+                        }
                         if (c.GetChild(1).GetType() == typeof(DVOscarParser.IdentifierContext))
                         {
                             node.AddProperty("Item", c.GetChild(1).GetText());
