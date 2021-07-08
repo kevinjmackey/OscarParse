@@ -373,7 +373,9 @@ namespace uast
         // Graph Edge, Relationship
         EDGE = 142,
         // Relationship between two entities, an edge between two nodes
-        RELATIONSHIP = 143
+        RELATIONSHIP = 143,
+        //File Field, Database Column, Graph Property, Code Variable
+        FIELD = 144
     }
     public class UastNode
     {
