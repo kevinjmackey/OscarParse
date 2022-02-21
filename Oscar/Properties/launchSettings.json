@@ -2,7 +2,7 @@
   "profiles": {
     "Oscar": {
       "commandName": "Project",
-      "commandLineArgs": "-i \"I:\\DVProjects\\IntuitionData\\OscarParse\\Oscar\\bin\\Debug\\netcoreapp3.1\\Sample.dvo\"",
+      "commandLineArgs": "-i \"I:\\DVProjects\\IntuitionData\\OscarAntlr\\Sample.dvo\"",
       "workingDirectory": "I:\\DVProjects\\IntuitionData\\OscarParse\\Oscar\\bin\\Debug\\netcoreapp3.1"
     }
   }
