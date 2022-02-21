@@ -10,7 +10,7 @@ block
         : BEGIN datastore_statement END
         ;
 datastore_statement
-        : DATASTORE identifier display_name? properties?
+        : DATASTORE identifier display=display_name? properties?
         parent_item_statement+
         END_DATASTORE
         ;
@@ -18,7 +18,7 @@ parent_item_statement
         : item_statement+
         ;
 item_statement
-        : ITEM identifier plural? display_name? properties? associations?
+        : ITEM identifier plural? display=display_name? properties? associations? filter_def? 
             attribute_def+  child_item_statement?
         END_ITEM
         ;
@@ -34,6 +34,7 @@ association_def
 cardinality
         : o2o
         | m2m
+        | m2o
         ;
 o2o
         : ONE_TO_ONE identifier from_key to_key
@@ -41,17 +42,34 @@ o2o
 m2m
         : MANY_TO_MANY identifier from_key to_key
         ;
+m2o
+        : MANY_TO_ONE identifier from_key to_key
+        ;
 from_key
         : KEY identifier
         ;
 to_key
         : KEY identifier
         ;
+filter_def
+        : FILTER filter_element (COMMA filter_element)* properties? END_FILTER
+        ;
+filter_element
+        : identifier display=display_name filter_condition
+        ;
+filter_condition
+        : EQUAL
+        | GT
+        | GE
+        | LT
+        | LE
+        | NE
+        ;
 attribute_def
         : identifier attrib_properties
         ;
 attrib_properties
-        : datatype_def length_def? precision_def? scale_def? default_value? properties? display_name?
+        : datatype_def length_def? precision_def? scale_def? default_value? properties? display=display_name?
         ;
 precision_def
         : PRECISION NUMBER_INT

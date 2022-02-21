@@ -141,6 +141,10 @@ namespace DV.Oscar
             _parentStack.Push(_currentParent);
             _currentParent.AddChild(node);
             node.Parent = _currentParent;
+            if (context.display != null)
+            {
+                node.AddProperty("Display Name", context.display.GetText());
+            }
             foreach (var child in context.children)
             {
                 if (child.GetType() == typeof(DVOscarParser.IdentifierContext))
@@ -150,14 +154,15 @@ namespace DV.Oscar
                     node.AddRole(Role.ENTITY);
                     node.AddRole(Role.IDENTIFIER);
                 }
-                if (child.GetType() == typeof(DVOscarParser.Display_nameContext))
-                {
-                    node.AddProperty("Display Name", child.GetText());
-                }
                 if (child.GetType() == typeof(DVOscarParser.PluralContext))
                 {
                     DVOscarParser.PluralContext plural = (DVOscarParser.PluralContext)child;
                     node.AddProperty("Plural", plural.GetChild(1).GetText());
+                }
+                if (child.GetType() == typeof(DVOscarParser.Filter_defContext))
+                {
+                    _currentParent = node;
+                    bool tf = VisitFilter_def((DVOscarParser.Filter_defContext)child);
                 }
                 if (child.GetType() == typeof(DVOscarParser.AssociationsContext))
                 {
@@ -277,16 +282,16 @@ namespace DV.Oscar
         public override bool VisitAttrib_properties([NotNull] DVOscarParser.Attrib_propertiesContext context)
         {
             UastNode node = _currentParent;
+            if (context.display != null)
+            {
+                node.AddProperty("Display Name", context.display.GetText());
+            }
             foreach (var child in context.children)
             {
-                if (child.GetType() == typeof(DVOscarParser.Display_nameContext))
-                {
-                    node.AddProperty("Display Name", child.GetText());
-                }
                 if (child.GetType() == typeof(DVOscarParser.Datatype_defContext))
                 {
                     DVOscarParser.Datatype_defContext datatype = (DVOscarParser.Datatype_defContext)child;
-                    node.AddProperty("Datatype", datatype.GetChild(0).GetText().ToUpper().Replace(":", ""));
+                    node.AddProperty("Datatype", datatype.GetChild(0).GetText().ToUpper().Replace("[", "").Replace("]", ""));
                 }
                 if (child.GetType() == typeof(DVOscarParser.Length_defContext))
                 {
@@ -321,6 +326,63 @@ namespace DV.Oscar
                             }
                         }
                     }
+                }
+            }
+            return TRUE;
+        }
+        public override bool VisitFilter_def([NotNull] DVOscarParser.Filter_defContext context)
+        {
+            UastNode node = new UastNode();
+            _parentStack.Push(_currentParent);
+            node.InternalType = $"dvo:Filter";
+            node.AddRole(Role.FILTER);
+            _currentParent.AddChild(node);
+            node.Parent = _currentParent;
+            foreach (var child in context.children)
+            {
+                if (child.GetType() == typeof(DVOscarParser.Filter_elementContext))
+                {
+                    _currentParent = node;
+                    bool tf = VisitFilter_element((DVOscarParser.Filter_elementContext)child);
+                }
+                if (child.GetType() == typeof(DVOscarParser.PropertiesContext))
+                {
+                    DVOscarParser.PropertiesContext properties = (DVOscarParser.PropertiesContext)child;
+                    foreach (DVOscarParser.PropertyContext property in properties.children)
+                    {
+                        foreach (var propertyDef in property.children)
+                        {
+                            if (propertyDef.GetType() == typeof(DVOscarParser.PairContext))
+                            {
+                                node.AddProperty(propertyDef.GetChild(0).GetText().Replace("\"", ""), propertyDef.GetChild(2).GetText());
+                            }
+                        }
+                    }
+                }
+            }
+            _currentParent = (UastNode)_parentStack.Pop();
+            return TRUE;
+        }
+        public override bool VisitFilter_element([NotNull] DVOscarParser.Filter_elementContext context)
+        {
+            UastNode node = new UastNode();
+            node.Parent = _currentParent;
+            _currentParent.AddChild(node);
+            if (context.display != null)
+            {
+                node.AddProperty("Display Name", context.display.GetText());
+            }
+            foreach (var child in context.children)
+            {
+                if (child.GetType() == typeof(DVOscarParser.IdentifierContext))
+                {
+                    node.InternalType = $"dvo:Condition";
+                    node.Token = child.GetText();
+                    node.AddRole(Role.IDENTIFIER);
+                }
+                if (child.GetType() == typeof(DVOscarParser.Filter_conditionContext))
+                {
+                    node.AddProperty("Condition", child.GetText());
                 }
             }
             return TRUE;

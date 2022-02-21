@@ -34,10 +34,10 @@ DATATYPE
     | DATETIME
     ;
 BOOLEAN
-    : COLON B O O L E A N
+    : LBRACK B O O L E A N RBRACK
     ;
 DATE
-    : COLON D A T E
+    : LBRACK D A T E RBRACK
     ;
 DEFAULT
     : D E F A U L T
@@ -51,23 +51,44 @@ END_ATTRIBUTE
 END_DATASTORE
 	: E N D '_' D A T A S T O R E
 	;
+END_FILTER
+   : E N D '_' F I L T E R
+   ;
 END_ITEM
 	: E N D '_' I T E M
 	;
 EQUAL
     : '='
     ;
+LT
+    : '?'
+    ;
+LE
+    : '<='
+    ;
+GT
+    : '>'
+    ;
+GE
+    : '>='
+    ;
+NE
+    : '!='
+    ;
 FALSE
     : F A L S E
     ;
+FILTER
+    : F I L T E R
+    ;
 CHARACTER
-    : COLON C H A R A C T E R
+    : LBRACK C H A R A C T E R RBRACK
     ;
 FLOAT
-    : COLON F L O A T
+    : LBRACK F L O A T RBRACK
     ;
 GUID
-    : COLON G U I D
+    : LBRACK G U I D RBRACK
     ;
 ITEM
 	: I T E M
@@ -109,10 +130,13 @@ UNDERSCORE
    : '_'
    ;
 INTEGER
-   : COLON I N T E G E R
+   : LBRACK I N T E G E R RBRACK
    ;
 MANY_TO_MANY
    : M A N Y '_' T O '_' M A N Y
+   ;
+MANY_TO_ONE
+   : M A N Y '_' T O '_' O N E
    ;
 MINUS
    : '-'
@@ -128,7 +152,7 @@ NUMBER
     | NUMBER_FLOAT
     ;
 NUMERIC
-    : COLON N U M E R I C
+    : LBRACK N U M E R I C RBRACK
     ;
 ONE_TO_ONE
     : O N E '_' T O '_' O N E
@@ -140,16 +164,16 @@ PRECISION
     : P R E C I S I O N
     ;
 STRING
-    : COLON S T R I N G
+    : LBRACK S T R I N G RBRACK
     ;
 STRING_LITERAL
    : '"' (~["\\\r\n] | ESCAPE_SEQUENCE)* '"'
    ;
 TIME
-   : COLON T I M E
+   : LBRACK T I M E RBRACK
    ;
 DATETIME
-    : COLON D A T E T I M E
+    : LBRACK D A T E T I M E RBRACK
     ;
 TRUE
     : T R U E
